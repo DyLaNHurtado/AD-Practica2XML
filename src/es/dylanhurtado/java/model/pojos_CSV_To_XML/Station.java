@@ -1,4 +1,4 @@
-package model;
+package model.pojos_CSV_To_XML;
 
 
 import lombok.AllArgsConstructor;
@@ -8,6 +8,6 @@ import lombok.Data;
 @AllArgsConstructor
 public class Station {
 
-    private String codigo,zona,nombre;
+    private String codigo, zona, nombre;
 
 }
