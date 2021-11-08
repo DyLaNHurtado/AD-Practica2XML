@@ -1,15 +1,14 @@
-import io.MeteoReader;
-import io.StationReader;
+import io.CSV.StationReader;
+import io.XML.XmlController;
 import model.Station;
 import service.MeteoService;
 import service.StationService;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Path;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 public class Main {
     final static String RESOURCES = "src"+ File.separator +"es"+File.separator+"dylanhurtado"+File.separator+"resources";
@@ -17,23 +16,17 @@ public class Main {
     final static Path STATIONCSV = Path.of(RESOURCES+File.separator+"calidad_aire_estaciones.csv");
     static MeteoService meteoService;
     static StationService stationService;
+
     public static void main(String[] args){
+        XmlController xmlController = XmlController.getInstance();
 
-        //if (args.length == 2 ) {
-            //String city = args[0];
-            //String uri = args[1];
-        StationReader.readDataOfPath(STATIONCSV).ifPresent((list)->
-                stationService = new StationService(list));
-        System.out.println(stationService.dataStringStation(stationService.dataStation("Coslada")));
-   // }else {
-            //System.err.println("Syntax Error: java -jar meteo.jar <exampleCity> <directory> ");
-        //}
+        xmlController.initData();
+        try {
+            xmlController.generateXML("temperatura");
+        } catch (IOException e) {
+            System.err.println("Error: No se ha podido generar temperatura.xml " + e.getMessage());
+        }
 
-
-        //Print aLL MeteoDataRegisters
-
-        Optional<List<Station>> s =StationReader.readDataOfPath(METE0CSV);
-        s.ifPresent(System.out::println);
 
 
     }

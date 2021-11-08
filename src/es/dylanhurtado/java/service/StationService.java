@@ -3,7 +3,6 @@ package service;
 import model.Station;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class StationService {
@@ -27,7 +26,10 @@ public class StationService {
                 s.append(x.getNombre()).append(" ").append(x.getZona()).append(" (").append(x.getCodigo()).append("),");
             });
             return s.toString();
+        }}
 
-        }
+        public List<String> getCodeCiudades(){
+            return data.stream().map(Station::getCodigo).sorted().distinct().collect(Collectors.toList());
     }
 }
+

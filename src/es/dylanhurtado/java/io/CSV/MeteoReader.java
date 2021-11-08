@@ -1,4 +1,4 @@
-package io;
+package io.CSV;
 
 import model.Meteo;
 
@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -13,10 +14,11 @@ import java.util.stream.Stream;
 
 public class MeteoReader {
 
-    public static Optional<List<Meteo>> readDataOfPath(Path p){
+    private final static List<Meteo> listaVacia = new ArrayList<>();
+    public static List<Meteo> readDataOfPath(Path p){
         if(Files.exists(p)) {
             try (Stream<String> stream = Files.lines(p, Charset.forName("windows-1252"))) {
-                return Optional.of(stream.skip(1)
+                return stream.skip(1)
                         .map(s -> s.split(";"))
                         .map(s -> {      //s == array of splits
 
@@ -27,13 +29,12 @@ public class MeteoReader {
                                     s[35], s[36], s[37], s[38], s[39], s[40], s[41], s[42], s[43],
                                     s[44], s[45], s[46], s[47], s[48], s[49], s[50], s[51], s[52], s[53], s[54], s[55]);
                         })
-                        .collect(Collectors.toList()));
+                        .collect(Collectors.toList());
 
             } catch (IOException e) {
                 System.err.println(e.getMessage());
-                return Optional.empty();
+                return listaVacia;
             }
-        }else{return Optional.empty();}
-
+        }else{return listaVacia;}
     }
 }

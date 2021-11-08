@@ -4,15 +4,12 @@ import model.Meteo;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class MeteoService {
 
-    List<Meteo> data;
+    private List<Meteo> data;
     private Double sumaMediaDias=0.0;
 
     public MeteoService(List<Meteo> data) {
@@ -20,16 +17,22 @@ public class MeteoService {
     }
 
 
-    public List<Meteo> dataPuntoMuestreo(String punto_muestreo) {
+    public List<Meteo> getDataPuntoMuestreo(String punto_muestreo) {
 
         return data.stream().filter(p -> p.getPuntoMuestreo().contains(punto_muestreo)).collect(Collectors.toList());
     }
+    public List<String> getPuntosMuestreo() {
+
+        return data.stream().map(Meteo::getPuntoMuestreo).sorted().distinct().collect(Collectors.toList());
+    }
 
 
-    public String dataFechaIncio(List<Meteo> listaPuntoMuestreo) {
+
+    public String getDataFechaIncio(List<Meteo> listaPuntoMuestreo) {
         if (listaPuntoMuestreo.isEmpty()) {
             return " ** Fecha no encontrada ** ";
         } else {
+
             int day = Integer.parseInt(listaPuntoMuestreo.stream().findFirst().get().getDia());
             int mon = Integer.parseInt(listaPuntoMuestreo.stream().findFirst().get().getMes());
             int year = Integer.parseInt(listaPuntoMuestreo.stream().findFirst().get().getAnio());
@@ -39,7 +42,7 @@ public class MeteoService {
         }
     }
 
-    public String dataFechaFin(List<Meteo> listaPuntoMuestreo) {
+    public String getDataFechaFin(List<Meteo> listaPuntoMuestreo) {
         if (listaPuntoMuestreo.isEmpty()) {
             return " ** Fecha no encontrada ** ";
         } else {
@@ -52,29 +55,30 @@ public class MeteoService {
         }
     }
 
-    public List<Meteo> dataVelocidadViento(List<Meteo> listaPuntoMuestreo) {
-        return listaPuntoMuestreo.stream().filter(f -> f.getPuntoMuestreo().contains("_81_89")).collect(Collectors.toList());
-    }
-    public List<Meteo> dataDireccionViento(List<Meteo> listaPuntoMuestreo) {
-        return listaPuntoMuestreo.stream().filter(f -> f.getPuntoMuestreo().contains("_82_89")).collect(Collectors.toList());
-    }
-    public List<Meteo> dataTemperatura(List<Meteo> listaPuntoMuestreo) {
-        return listaPuntoMuestreo.stream().filter(f -> f.getPuntoMuestreo().contains("_83_89")).collect(Collectors.toList());
-    }
-    public List<Meteo> dataHumedadRelativa(List<Meteo> listaPuntoMuestreo) {
-        return listaPuntoMuestreo.stream().filter(f -> f.getPuntoMuestreo().contains("_86_89")).collect(Collectors.toList());
-    }
-    public List<Meteo> dataPresionAtmosferica(List<Meteo> listaPuntoMuestreo) {
-        return listaPuntoMuestreo.stream().filter(f -> f.getPuntoMuestreo().contains("_87_89")).collect(Collectors.toList());
-    }
-    public List<Meteo> dataRadiacionSolar(List<Meteo> listaPuntoMuestreo) {
-        return listaPuntoMuestreo.stream().filter(f -> f.getPuntoMuestreo().contains("_88_89")).collect(Collectors.toList());
-    }
-    public List<Meteo> dataPrecipitacion(List<Meteo> listaPuntoMuestreo) {
+    public List<Meteo> getListMeasure(String puntoMuestreo,List<Meteo> listaPuntoMuestreo) {
+
+        List<Meteo> emptyList = new ArrayList<>();
+
+        if(puntoMuestreo.contains("_81_89")) {
+            return listaPuntoMuestreo.stream().filter(f -> f.getPuntoMuestreo().contains("_81_89")).collect(Collectors.toList());
+        }else if(puntoMuestreo.contains("_82_89")) {
+            return listaPuntoMuestreo.stream().filter(f -> f.getPuntoMuestreo().contains("_82_89")).collect(Collectors.toList());
+        }else if(puntoMuestreo.contains("_83_89")) {
+            return listaPuntoMuestreo.stream().filter(f -> f.getPuntoMuestreo().contains("_83_89")).collect(Collectors.toList());
+        }else if(puntoMuestreo.contains("_86_89")) {
+            return listaPuntoMuestreo.stream().filter(f -> f.getPuntoMuestreo().contains("_86_89")).collect(Collectors.toList());
+        }else if(puntoMuestreo.contains("_87_89")) {
+            return listaPuntoMuestreo.stream().filter(f -> f.getPuntoMuestreo().contains("_87_89")).collect(Collectors.toList());
+        }else if(puntoMuestreo.contains("_88_89")) {
+            return listaPuntoMuestreo.stream().filter(f -> f.getPuntoMuestreo().contains("_88_89")).collect(Collectors.toList());
+        }else if(puntoMuestreo.contains("_89_89")) {
         return listaPuntoMuestreo.stream().filter(f -> f.getPuntoMuestreo().contains("_89_89")).collect(Collectors.toList());
     }
+        return emptyList;
+    }
 
-    public List<Double> dataAverage(List<Meteo> lista) {
+
+    public List<Double> getDataAverageMinMax(List<Meteo> lista) {
         if (lista.isEmpty()) {
             System.err.println("** Error: Lista de medias vacia **");
         }
@@ -86,153 +90,154 @@ public class MeteoService {
 
 
             if (m.getV01().equalsIgnoreCase("V")) {
-                sum += Double.parseDouble(m.getH01());
+                sum += Double.parseDouble(m.getH01().replace(",","."));
                 notN += 1;
-                values.add(Double.parseDouble(m.getH01()));
+                values.add(Double.parseDouble(m.getH01().replace(",",".")));
             }
             if (m.getV02().equalsIgnoreCase("V")) {
-                sum += Double.parseDouble(m.getH02());
+                sum += Double.parseDouble(m.getH02().replace(",","."));
                 notN += 1;
-                values.add(Double.parseDouble(m.getH02()));
+                values.add(Double.parseDouble(m.getH02().replace(",",".")));
 
             }
             if (m.getV03().equalsIgnoreCase("V")) {
-                sum += Double.parseDouble(m.getH03());
+                sum += Double.parseDouble(m.getH03().replace(",","."));
                 notN += 1;
-                values.add(Double.parseDouble(m.getH03()));
+                values.add(Double.parseDouble(m.getH03().replace(",",".")));
 
             }
             if (m.getV04().equalsIgnoreCase("V")) {
-                sum += Double.parseDouble(m.getH04());
+                sum += Double.parseDouble(m.getH04().replace(",","."));
                 notN += 1;
-                values.add(Double.parseDouble(m.getH04()));
+                values.add(Double.parseDouble(m.getH04().replace(",",".")));
 
             }
             if (m.getV05().equalsIgnoreCase("V")) {
-                sum += Double.parseDouble(m.getH05());
+                sum += Double.parseDouble(m.getH05().replace(",","."));
                 notN += 1;
-                values.add(Double.parseDouble(m.getH05()));
+                values.add(Double.parseDouble(m.getH05().replace(",",".")));
 
             }
             if (m.getV06().equalsIgnoreCase("V")) {
-                sum += Double.parseDouble(m.getH06());
+                sum += Double.parseDouble(m.getH06().replace(",","."));
                 notN += 1;
-                values.add(Double.parseDouble(m.getH06()));
+                values.add(Double.parseDouble(m.getH06().replace(",",".")));
 
             }
             if (m.getV07().equalsIgnoreCase("V")) {
-                sum += Double.parseDouble(m.getH07());
+                sum += Double.parseDouble(m.getH07().replace(",","."));
                 notN += 1;
-                values.add(Double.parseDouble(m.getH07()));
+                values.add(Double.parseDouble(m.getH07().replace(",",".")));
 
             }
             if (m.getV08().equalsIgnoreCase("V")) {
-                sum += Double.parseDouble(m.getH08());
+                sum += Double.parseDouble(m.getH08().replace(",","."));
                 notN += 1;
-                values.add(Double.parseDouble(m.getH08()));
+                values.add(Double.parseDouble(m.getH08().replace(",",".")));
 
             }
             if (m.getV09().equalsIgnoreCase("V")) {
-                sum += Double.parseDouble(m.getH09());
+                sum += Double.parseDouble(m.getH09().replace(",","."));
                 notN += 1;
-                values.add(Double.parseDouble(m.getH09()));
+                values.add(Double.parseDouble(m.getH09().replace(",",".")));
 
             }
             if (m.getV10().equalsIgnoreCase("V")) {
-                sum += Double.parseDouble(m.getH10());
+                sum += Double.parseDouble(m.getH10().replace(",","."));
                 notN += 1;
-                values.add(Double.parseDouble(m.getH10()));
+                values.add(Double.parseDouble(m.getH10().replace(",",".")));
 
             }
             if (m.getV11().equalsIgnoreCase("V")) {
-                sum += Double.parseDouble(m.getH11());
+                sum += Double.parseDouble(m.getH11().replace(",","."));
                 notN += 1;
-                values.add(Double.parseDouble(m.getH11()));
+                values.add(Double.parseDouble(m.getH11().replace(",",".")));
 
             }
             if (m.getV12().equalsIgnoreCase("V")) {
-                sum += Double.parseDouble(m.getH12());
+                sum += Double.parseDouble(m.getH12().replace(",","."));
                 notN += 1;
-                values.add(Double.parseDouble(m.getH12()));
+                values.add(Double.parseDouble(m.getH12().replace(",",".")));
 
             }
             if (m.getV13().equalsIgnoreCase("V")) {
-                sum += Double.parseDouble(m.getH13());
+                sum += Double.parseDouble(m.getH13().replace(",","."));
                 notN += 1;
-                values.add(Double.parseDouble(m.getH13()));
+                values.add(Double.parseDouble(m.getH13().replace(",",".")));
 
             }
             if (m.getV14().equalsIgnoreCase("V")) {
-                sum += Double.parseDouble(m.getH14());
+                sum += Double.parseDouble(m.getH14().replace(",","."));
                 notN += 1;
-                values.add(Double.parseDouble(m.getH14()));
+                values.add(Double.parseDouble(m.getH14().replace(",",".")));
 
             }
             if (m.getV15().equalsIgnoreCase("V")) {
-                sum += Double.parseDouble(m.getH15());
+                sum += Double.parseDouble(m.getH15().replace(",","."));
                 notN += 1;
-                values.add(Double.parseDouble(m.getH15()));
+                values.add(Double.parseDouble(m.getH15().replace(",",".")));
 
             }
             if (m.getV16().equalsIgnoreCase("V")) {
-                sum += Double.parseDouble(m.getH16());
+                sum += Double.parseDouble(m.getH16().replace(",","."));
                 notN += 1;
-                values.add(Double.parseDouble(m.getH16()));
+                values.add(Double.parseDouble(m.getH16().replace(",",".")));
 
             }
             if (m.getV17().equalsIgnoreCase("V")) {
-                sum += Double.parseDouble(m.getH17());
+                sum += Double.parseDouble(m.getH17().replace(",","."));
                 notN += 1;
-                values.add(Double.parseDouble(m.getH17()));
+                values.add(Double.parseDouble(m.getH17().replace(",",".")));
 
             }
             if (m.getV18().equalsIgnoreCase("V")) {
-                sum += Double.parseDouble(m.getH18());
+                sum += Double.parseDouble(m.getH18().replace(",","."));
                 notN += 1;
-                values.add(Double.parseDouble(m.getH18()));
+                values.add(Double.parseDouble(m.getH18().replace(",",".")));
             }
             if (m.getV19().equalsIgnoreCase("V")) {
-                sum += Double.parseDouble(m.getH19());
+                sum += Double.parseDouble(m.getH19().replace(",","."));
                 notN += 1;
-                values.add(Double.parseDouble(m.getH19()));
+                values.add(Double.parseDouble(m.getH19().replace(",",".")));
 
             }
             if (m.getV20().equalsIgnoreCase("V")) {
-                sum += Double.parseDouble(m.getH20());
+                sum += Double.parseDouble(m.getH20().replace(",","."));
                 notN += 1;
-                values.add(Double.parseDouble(m.getH20()));
+                values.add(Double.parseDouble(m.getH20().replace(",",".")));
 
             }
             if (m.getV21().equalsIgnoreCase("V")) {
-                sum += Double.parseDouble(m.getH21());
+                sum += Double.parseDouble(m.getH21().replace(",","."));
                 notN += 1;
-                values.add(Double.parseDouble(m.getH21()));
+                values.add(Double.parseDouble(m.getH21().replace(",",".")));
 
             }
             if (m.getV22().equalsIgnoreCase("V")) {
-                sum += Double.parseDouble(m.getH22());
+                sum += Double.parseDouble(m.getH22().replace(",","."));
                 notN += 1;
-                values.add(Double.parseDouble(m.getH22()));
+                values.add(Double.parseDouble(m.getH22().replace(",",".")));
 
             }
             if (m.getV23().equalsIgnoreCase("V")) {
-                sum += Double.parseDouble(m.getH23());
+                sum += Double.parseDouble(m.getH23().replace(",","."));
                 notN += 1;
-                values.add(Double.parseDouble(m.getH23()));
+                values.add(Double.parseDouble(m.getH23().replace(",",".")));
 
             }
             if (m.getV24().equalsIgnoreCase("V")) {
-                sum += Double.parseDouble(m.getH24());
+                sum += Double.parseDouble(m.getH24().replace(",","."));
                 notN += 1;
-                values.add(Double.parseDouble(m.getH24()));
+                values.add(Double.parseDouble(m.getH24().replace(",",".")));
             }
             sumaMediaDias += sum / notN;
         });
 
         Double min = values.stream().min(Comparator.comparing(v -> v)).get();
-        Double max = values.stream().min(Comparator.comparing(v -> v)).get();
+        Double max = values.stream().max(Comparator.comparing(v -> v)).get();
 
-        return List.of(sumaMediaDias/lista.size(),min,max) ;
+
+        return List.of(sumaMediaDias/lista.size(),min,max);
     }
 
 }
