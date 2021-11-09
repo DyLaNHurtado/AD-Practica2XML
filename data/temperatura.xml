@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <temperatura>
-  <municipio id="005">
+  <municipio id="5">
     <velocidad_del_viento>
       <minDate>01/09/2021</minDate>
       <maxDate>27/09/2021</maxDate>
@@ -51,7 +51,7 @@
       <average>4632.348499585017</average>
     </precipitacion>
   </municipio>
-  <municipio id="006">
+  <municipio id="6">
     <velocidad_del_viento>
       <minDate>01/09/2021</minDate>
       <maxDate>27/09/2021</maxDate>
@@ -102,7 +102,7 @@
       <average>9264.696999170035</average>
     </precipitacion>
   </municipio>
-  <municipio id="007">
+  <municipio id="7">
     <velocidad_del_viento>
       <minDate>01/09/2021</minDate>
       <maxDate>27/09/2021</maxDate>
@@ -153,7 +153,7 @@
       <average>13897.045498755051</average>
     </precipitacion>
   </municipio>
-  <municipio id="009">
+  <municipio id="9">
     <velocidad_del_viento>
       <minDate>01/09/2021</minDate>
       <maxDate>27/09/2021</maxDate>
@@ -204,7 +204,7 @@
       <average>18529.393998340052</average>
     </precipitacion>
   </municipio>
-  <municipio id="013">
+  <municipio id="13">
     <velocidad_del_viento>
       <minDate>01/09/2021</minDate>
       <maxDate>27/09/2021</maxDate>
@@ -255,7 +255,7 @@
       <average>23161.742497925083</average>
     </precipitacion>
   </municipio>
-  <municipio id="014">
+  <municipio id="14">
     <velocidad_del_viento>
       <minDate>01/09/2021</minDate>
       <maxDate>27/09/2021</maxDate>
@@ -306,7 +306,7 @@
       <average>27794.090997510128</average>
     </precipitacion>
   </municipio>
-  <municipio id="016">
+  <municipio id="16">
     <velocidad_del_viento>
       <minDate>01/09/2021</minDate>
       <maxDate>27/09/2021</maxDate>
@@ -357,7 +357,7 @@
       <average>32426.439497095176</average>
     </precipitacion>
   </municipio>
-  <municipio id="045">
+  <municipio id="45">
     <velocidad_del_viento>
       <minDate>01/09/2021</minDate>
       <maxDate>27/09/2021</maxDate>
@@ -408,7 +408,7 @@
       <average>37058.78799668022</average>
     </precipitacion>
   </municipio>
-  <municipio id="047">
+  <municipio id="47">
     <velocidad_del_viento>
       <minDate>01/09/2021</minDate>
       <maxDate>27/09/2021</maxDate>
@@ -459,7 +459,7 @@
       <average>41691.1364962652</average>
     </precipitacion>
   </municipio>
-  <municipio id="049">
+  <municipio id="49">
     <velocidad_del_viento>
       <minDate>01/09/2021</minDate>
       <maxDate>27/09/2021</maxDate>
@@ -510,7 +510,7 @@
       <average>46323.484995850224</average>
     </precipitacion>
   </municipio>
-  <municipio id="058">
+  <municipio id="58">
     <velocidad_del_viento>
       <minDate>01/09/2021</minDate>
       <maxDate>27/09/2021</maxDate>
@@ -561,7 +561,7 @@
       <average>50955.83349543525</average>
     </precipitacion>
   </municipio>
-  <municipio id="065">
+  <municipio id="65">
     <velocidad_del_viento>
       <minDate>01/09/2021</minDate>
       <maxDate>27/09/2021</maxDate>
@@ -612,7 +612,7 @@
       <average>55588.18199502026</average>
     </precipitacion>
   </municipio>
-  <municipio id="067">
+  <municipio id="67">
     <velocidad_del_viento>
       <minDate>01/09/2021</minDate>
       <maxDate>27/09/2021</maxDate>
@@ -663,7 +663,7 @@
       <average>60220.530494605286</average>
     </precipitacion>
   </municipio>
-  <municipio id="074">
+  <municipio id="74">
     <velocidad_del_viento>
       <minDate>01/09/2021</minDate>
       <maxDate>27/09/2021</maxDate>
@@ -714,7 +714,7 @@
       <average>64852.87899419031</average>
     </precipitacion>
   </municipio>
-  <municipio id="080">
+  <municipio id="80">
     <velocidad_del_viento>
       <minDate>01/09/2021</minDate>
       <maxDate>27/09/2021</maxDate>
@@ -765,7 +765,7 @@
       <average>69485.22749377532</average>
     </precipitacion>
   </municipio>
-  <municipio id="092">
+  <municipio id="92">
     <velocidad_del_viento>
       <minDate>01/09/2021</minDate>
       <maxDate>27/09/2021</maxDate>

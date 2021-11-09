@@ -7,16 +7,17 @@ import java.util.stream.Collectors;
 
 public class StationUtil {
 
-    List<Station> data;
+    static List<Station> data;
 
     public StationUtil(List<Station> data) {
         this.data = data;
     }
 
-    public List<Station> dataStation(String city) {
+    public static List<Station> dataStation(String city) {
 
         return data.stream().filter(x -> x.getNombre().equalsIgnoreCase(city)).collect(Collectors.toList());
     }
+
 
     public String dataStringStation(List<Station> stations) {
         if (stations.isEmpty()) {

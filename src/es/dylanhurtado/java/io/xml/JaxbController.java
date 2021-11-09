@@ -51,6 +51,7 @@ public class JaxbController {
      * @param uri
      * @throws JAXBException
      */
+
     public void writeXMLFile(String uri) throws JAXBException {
         this.marshaller.marshal(resultados, new File(uri));
         System.out.println("Fichero XML generado con éxito");

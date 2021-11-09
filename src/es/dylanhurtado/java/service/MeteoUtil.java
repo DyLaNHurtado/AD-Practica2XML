@@ -240,4 +240,7 @@ public class MeteoUtil {
         return List.of(sumaMediaDias / lista.size(), min, max);
     }
 
+
+
+
 }
