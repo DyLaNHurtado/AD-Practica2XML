@@ -13,24 +13,20 @@ public class StationUtil {
         this.data = data;
     }
 
+    /**
+     * Metedo que sirve para filtrar teniendo el nombre de la ciudad
+     * @param city nombre ciudad o municipio
+     * @return devuelve una lista con el nombre que coincida con el pasado por parametro
+     */
     public static List<Station> dataStation(String city) {
 
         return data.stream().filter(x -> x.getNombre().equalsIgnoreCase(city)).collect(Collectors.toList());
     }
 
-
-    public String dataStringStation(List<Station> stations) {
-        if (stations.isEmpty()) {
-            return " ** No hay estaciones asociadas ** ";
-        } else {
-            StringBuilder s = new StringBuilder("");
-            stations.forEach(x -> {
-                s.append(x.getNombre()).append(" ").append(x.getZona()).append(" (").append(x.getCodigo()).append("),");
-            });
-            return s.toString();
-        }
-    }
-
+    /**
+     * Metodo usado para obtener todos los codigos de las ciudades sin repetir y ordenados
+     * @return Lista de codigos ciudades
+     */
     public List<String> getCodeCiudades() {
         return data.stream().map(Station::getCodigo).sorted().distinct().collect(Collectors.toList());
     }

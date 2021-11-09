@@ -31,16 +31,16 @@ public class XPathController {
     }
 
     /**
-     * Almacenar expresion xpath
+     * Metodo para almacenar expresion xpath
      *
-     * @param xpath expresion
+     * @param xpath expresion xpath
      */
-    public void setExpr(String xpath) {
+    public void setExpresion(String xpath) {
         expr = factory.compile(xpath, Filters.element());
     }
 
     /**
-     * Almacenar el documento
+     * Metodo que inicializa el documento data para almacenarlo en variable local
      *
      * @param data documento
      */
@@ -49,18 +49,19 @@ public class XPathController {
     }
 
     /**
-     * Obtenemos las consultas
+     * Metodo que obtiene las consultas realizadas en XPath
      *
-     * @return List<Element> elementos filtrados
+     * @return Lista  elementos filtrados
+     * @param padre  elemento padre
      */
-    public Element consultasXpath(Element padre) {
+    public Element consultsXpath(Element padre) {
         List<Element> elementos = expr.evaluate(data);
         elementos.forEach(elemento -> {
             padre.addContent(new Element(elemento.getName()));
             List<Element> hijos = elemento.getChildren();
             Element hijo = padre.getChild(elemento.getName());
-            for (int i = 0; i < hijos.size(); i++) {
-                hijo.addContent(new Element(hijos.get(i).getName()).setText(hijos.get(i).getText()));
+            for (Element element : hijos) {
+                hijo.addContent(new Element(element.getName()).setText(element.getText()));
             }
         });
         return padre;

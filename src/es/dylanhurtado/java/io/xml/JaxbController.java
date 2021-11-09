@@ -22,13 +22,22 @@ public class JaxbController {
         String uri = "data";
     }
 
-
+    /**
+     * Patron Singleton
+     * @return instacia de la clase
+     */
     public static JaxbController getInstance() {
         if (controller == null)
             controller = new JaxbController();
         return controller;
     }
 
+    /**
+     * Metodo que carga los datos de temperatura.xml a objetos gracias a JAXB
+     * @param uri Direccion archivo
+     * @return Objeto clase Temperatura
+     * @throws JAXBException
+     */
     public Temperatura loadData(String uri) throws JAXBException {
         JAXBContext context = JAXBContext.newInstance(Temperatura.class,Municipio.class);
         this.unmarshaller = context.createUnmarshaller();
@@ -37,28 +46,5 @@ public class JaxbController {
         return temperatura;
         }
 
-    public void initData(Resultados resultados) throws JAXBException {
-        this.resultados=resultados;
-        JAXBContext context = JAXBContext.newInstance(Resultados.class);
-        this.marshaller = context.createMarshaller();
-        this.marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-    }
-
-
-    /**
-     * Escribe un fichero XML con el contenido de los datos
-     *
-     * @param uri
-     * @throws JAXBException
-     */
-
-    public void writeXMLFile(String uri) throws JAXBException {
-        this.marshaller.marshal(resultados, new File(uri));
-        System.out.println("Fichero XML generado con éxito");
-
-    }
-    public void printXML() throws JAXBException {
-        this.marshaller.marshal(resultados, System.out);
-    }
 }
 

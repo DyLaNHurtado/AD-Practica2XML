@@ -16,18 +16,31 @@ public class MeteoUtil {
         this.data = data;
     }
 
-
+    /**
+     * Metodo que devuelve una lista de objetos de la clase Meteo la cual esta filtrada por que contenga el Punto de Muestreo
+     *
+     * @param punto_muestreo String que contendra un punto de muestreo
+     * @return Lista que contiene el punto de muestreo dado
+     */
     public List<Meteo> getDataPuntoMuestreo(String punto_muestreo) {
 
         return data.stream().filter(p -> p.getPuntoMuestreo().contains(punto_muestreo)).collect(Collectors.toList());
     }
 
+    /**
+     * Metodo que devuelve una lista con los Puntos de muestreo solamente, viene muy bien para filtrar
+     * @return Lista con todos los puntos de muestreo sin repetir y ordenados
+     */
     public List<String> getPuntosMuestreo() {
 
         return data.stream().map(Meteo::getPuntoMuestreo).sorted().distinct().collect(Collectors.toList());
     }
 
-
+    /**
+     * Metodo que filtra y busca la fecha Inicio
+     * @param listaPuntoMuestreo  Lista puntoMuestreo
+     * @return Fecha inicio en un formato personalizado
+     */
     public String getDataFechaIncio(List<Meteo> listaPuntoMuestreo) {
         if (listaPuntoMuestreo.isEmpty()) {
             return " ** Fecha no encontrada ** ";
@@ -42,6 +55,11 @@ public class MeteoUtil {
         }
     }
 
+    /**
+     * Metodo que filtra y busca la fecha Fin
+     * @param listaPuntoMuestreo Lista puntoMuestreo
+     * @return Fecha fin en un formato personalizado
+     */
     public String getDataFechaFin(List<Meteo> listaPuntoMuestreo) {
         if (listaPuntoMuestreo.isEmpty()) {
             return " ** Fecha no encontrada ** ";
@@ -55,6 +73,12 @@ public class MeteoUtil {
         }
     }
 
+    /**
+     * Metodo para filtrar en los puntos de muestreo para saber que tipo de medida es
+     * @param puntoMuestreo  String puntoMuestreo
+     * @param listaPuntoMuestreo Lista puntoMuestreo
+     * @return lista filtrada por un tipo concreto de medida / lista vacia en caso que no encuentre nada
+     */
     public List<Meteo> getListMeasure(String puntoMuestreo, List<Meteo> listaPuntoMuestreo) {
 
         List<Meteo> emptyList = new ArrayList<>();
@@ -77,7 +101,11 @@ public class MeteoUtil {
         return emptyList;
     }
 
-
+    /**
+     * Metodo que calcula los maximos, minimos y medias obviando los valores nulos o no validos
+     * @param lista Lista de objetos de la clase Meteo
+     * @return Lista de double con la media en la primera posicion, min segunda y max tercera
+     */
     public List<Double> getDataAverageMinMax(List<Meteo> lista) {
         if (lista.isEmpty()) {
             System.err.println("** Error: Lista de medias vacia **");

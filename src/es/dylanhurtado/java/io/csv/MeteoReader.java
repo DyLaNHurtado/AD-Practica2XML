@@ -15,6 +15,11 @@ public class MeteoReader {
 
     private final static List<Meteo> listaVacia = new ArrayList<>();
 
+    /**
+     * Metodo que sirve para leer calidad_aire_datos_meteo_mes.csv y con el cual se instancias los objetos Meteo en un ArrayList
+     * @param p Path del csv
+     * @return ArrayList de Objetos Station
+     */
     public static List<Meteo> readDataOfPath(Path p) {
         if (Files.exists(p)) {
             try (Stream<String> stream = Files.lines(p, Charset.forName("windows-1252"))) {

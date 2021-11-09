@@ -15,6 +15,11 @@ public class StationReader {
 
     private final static List<Station> listaVacia = new ArrayList<>();
 
+    /**
+     * Metodo que sirve para leer calidad_aire_estaciones.csv y con el cual se instancias los objetos Station en un ArrayList
+     * @param p Path del csv
+     * @return ArrayList de Objetos Station
+     */
     public static List<Station> readDataOfPath(Path p) {
         if (Files.exists(p)) {
             try (Stream<String> stream = Files.lines(p, Charset.forName("windows-1252"))) {

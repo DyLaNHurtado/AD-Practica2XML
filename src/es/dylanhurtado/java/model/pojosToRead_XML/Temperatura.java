@@ -299,4 +299,34 @@ public class Temperatura {
         this.mun180 = mun180;
     }
 
+    @Override
+    public String toString() {
+        return "Temperatura{" +
+                "mun005=" + mun005 +
+                ", mun006=" + mun006 +
+                ", mun007=" + mun007 +
+                ", mun009=" + mun009 +
+                ", mun013=" + mun013 +
+                ", mun014=" + mun014 +
+                ", mun016=" + mun016 +
+                ", mun045=" + mun045 +
+                ", mun047=" + mun047 +
+                ", mun049=" + mun049 +
+                ", mun058=" + mun058 +
+                ", mun065=" + mun065 +
+                ", mun067=" + mun067 +
+                ", mun074=" + mun074 +
+                ", mun080=" + mun080 +
+                ", mun092=" + mun092 +
+                ", mun102=" + mun102 +
+                ", mun120=" + mun120 +
+                ", mun123=" + mun123 +
+                ", mun133=" + mun133 +
+                ", mun148=" + mun148 +
+                ", mun161=" + mun161 +
+                ", mun171=" + mun171 +
+                ", mun180=" + mun180 +
+                ", municipios=" + municipios +
+                '}';
+    }
 }
