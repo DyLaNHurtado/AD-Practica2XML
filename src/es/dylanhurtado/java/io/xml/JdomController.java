@@ -16,6 +16,9 @@ import service.StationUtil;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -258,5 +261,63 @@ public class JdomController {
             e.printStackTrace();
         }
     }
+
+
+
+    //
+
+
+
+
+    public void generateMD() {
+        File md = null;
+        PrintWriter writer = null;
+
+        try {
+            Element padre = null;
+            if (data.getRootElement().getChildren().size() == 1) {
+                Element root = data.getRootElement();
+                padre = root.getChild("resultado");
+            } else {
+                padre = data.getRootElement().getChildren().get(data.getRootElement().getChildren().size() - 1);
+            }
+
+            String fecha = new SimpleDateFormat("dd_MM_yyyy").format(Calendar.getInstance().getTime());
+            md = new File(DATA_URI + File.separator + "informe_" + padre.getChild("ciudad").getText().toLowerCase().replace(" ", "") + "" + fecha + ".md");
+            writer = new PrintWriter(new FileWriter(md, StandardCharsets.UTF_8));
+
+            writer.println("## INFORME PRÁCTICA XML DYLAN");
+            writer.println("- *ID del informe: " + padre.getAttributeValue("id") + "*");
+            writer.println("- *Fecha de creación del informe: " + padre.getChild("fecha_creacion").getText() + "*");
+            writer.println("- *Tiempo de ejecución: " + padre.getChild("tiempo_ejecucion").getText() + " " + padre.getChild("tiempo_ejecucion").getAttributeValue("unidad") + "*");
+            writer.println("- *Datos sobre " + padre.getChild("ciudad").getText() + "*");
+            writer.println("- DATOS METEOROLÓGICOS:");
+            List<Element> temperatura = padre.getChild("temperatura").getChildren();
+            for (Element m : temperatura) {
+                writer.println("    * " + m.getName().replace("_", " ").toUpperCase());
+                writer.println("        * Fecha del mínimo: " + m.getChild("minDate").getText());
+                writer.println("        * Fecha del máximo: " + m.getChild("maxDate").getText());
+                writer.println("        * Mínimo: " + m.getChild("min").getText());
+                writer.println("        * Maximo: " + m.getChild("max").getText());
+                writer.println("        * Media: " + m.getChild("average").getText());
+            }
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (writer != null)
+                    writer.close();
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
+        }
+    }
+
+
+
+
+
 
 }

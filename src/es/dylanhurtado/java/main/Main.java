@@ -39,6 +39,7 @@ public class Main {
             JDOMController.generateXML("temperatura");
 
             JDOMController.loadMediciones("Getafe");
+            JDOMController.generateMD();
         } catch (IOException e) {
             e.printStackTrace();
         }

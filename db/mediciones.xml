@@ -112,4 +112,116 @@
       </precipitacion>
     </temperatura>
   </resultado>
+  <resultado id="ad01969a-1e9c-4456-af5b-66a5ff2ed964">
+    <ciudad>Getafe</ciudad>
+    <fecha_creacion>09/11/2021 03:06:16</fecha_creacion>
+    <tiempo_ejecucion unidad="segundos">3</tiempo_ejecucion>
+    <temperatura>
+      <velocidad_del_viento>
+        <minDate>01/09/2021</minDate>
+        <maxDate>27/09/2021</maxDate>
+        <min>1.0</min>
+        <max>35.0</max>
+        <average>50981.024623923666</average>
+      </velocidad_del_viento>
+      <radiacion_solar>
+        <minDate>01/09/2021</minDate>
+        <maxDate>27/09/2021</maxDate>
+        <min>3.0</min>
+        <max>344.0</max>
+        <average>51431.57426989318</average>
+      </radiacion_solar>
+      <direccion_del_viento>
+        <minDate>01/09/2021</minDate>
+        <maxDate>27/09/2021</maxDate>
+        <min>13.0</min>
+        <max>321.0</max>
+        <average>51983.999377528846</average>
+      </direccion_del_viento>
+      <presion_atmosferica>
+        <minDate>01/09/2021</minDate>
+        <maxDate>27/09/2021</maxDate>
+        <min>25.0</min>
+        <max>91.0</max>
+        <average>52159.227161790724</average>
+      </presion_atmosferica>
+      <temperatura>
+        <minDate>01/09/2021</minDate>
+        <maxDate>27/09/2021</maxDate>
+        <min>948.0</min>
+        <max>958.0</max>
+        <average>55015.21838235298</average>
+      </temperatura>
+      <humedad_relativa>
+        <minDate>01/09/2021</minDate>
+        <maxDate>27/09/2021</maxDate>
+        <min>0.0</min>
+        <max>891.0</max>
+        <average>55586.53707075431</average>
+      </humedad_relativa>
+      <precipitacion>
+        <minDate>01/09/2021</minDate>
+        <maxDate>27/09/2021</maxDate>
+        <min>0.0</min>
+        <max>44.0</max>
+        <average>55588.18199502026</average>
+      </precipitacion>
+    </temperatura>
+  </resultado>
+  <resultado id="1042bae7-0940-47d5-9bf0-ddde97d8f3c6">
+    <ciudad>Getafe</ciudad>
+    <fecha_creacion>09/11/2021 03:09:37</fecha_creacion>
+    <tiempo_ejecucion unidad="segundos">3</tiempo_ejecucion>
+    <temperatura>
+      <velocidad_del_viento>
+        <minDate>01/09/2021</minDate>
+        <maxDate>27/09/2021</maxDate>
+        <min>1.0</min>
+        <max>35.0</max>
+        <average>50981.024623923666</average>
+      </velocidad_del_viento>
+      <radiacion_solar>
+        <minDate>01/09/2021</minDate>
+        <maxDate>27/09/2021</maxDate>
+        <min>3.0</min>
+        <max>344.0</max>
+        <average>51431.57426989318</average>
+      </radiacion_solar>
+      <direccion_del_viento>
+        <minDate>01/09/2021</minDate>
+        <maxDate>27/09/2021</maxDate>
+        <min>13.0</min>
+        <max>321.0</max>
+        <average>51983.999377528846</average>
+      </direccion_del_viento>
+      <presion_atmosferica>
+        <minDate>01/09/2021</minDate>
+        <maxDate>27/09/2021</maxDate>
+        <min>25.0</min>
+        <max>91.0</max>
+        <average>52159.227161790724</average>
+      </presion_atmosferica>
+      <temperatura>
+        <minDate>01/09/2021</minDate>
+        <maxDate>27/09/2021</maxDate>
+        <min>948.0</min>
+        <max>958.0</max>
+        <average>55015.21838235298</average>
+      </temperatura>
+      <humedad_relativa>
+        <minDate>01/09/2021</minDate>
+        <maxDate>27/09/2021</maxDate>
+        <min>0.0</min>
+        <max>891.0</max>
+        <average>55586.53707075431</average>
+      </humedad_relativa>
+      <precipitacion>
+        <minDate>01/09/2021</minDate>
+        <maxDate>27/09/2021</maxDate>
+        <min>0.0</min>
+        <max>44.0</max>
+        <average>55588.18199502026</average>
+      </precipitacion>
+    </temperatura>
+  </resultado>
 </resultados>
