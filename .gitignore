@@ -1,6 +1,5 @@
-<<<<<<< HEAD
+
 target/
-*.pdf
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
@@ -11,6 +10,4 @@ buildNumber.properties
 .mvn/timing.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
-=======
-# Elimina los ficheros o directorios que no quieras incluir
->>>>>>> 8e57fe7e3ab1b91c1af9c7464c7b33740486e330
+
