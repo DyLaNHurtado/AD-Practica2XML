@@ -120,7 +120,7 @@ public class JdomController {
     /**
      * Metodo que incializa el contenido de el elemento municipio
      */
-    private void initChildrens() {
+    private void initChildrens() throws IOException {
         Map<String, String> measures = UnitMeasures.getInstance().getMeasures();
         MeteoUtil list = new MeteoUtil(MeteoReader.readDataOfPath(METE0CSV));
         Set<String> keysMap = measures.keySet();
